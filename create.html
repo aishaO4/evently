@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create and publish a Gatherly event.">
+  <title>Create an event — Gatherly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="create.css">
+</head>
+<body>
+  <header class="wizard-header">
+    <a class="brand" href="index.html" aria-label="Gatherly home"><span>✦</span> gatherly</a>
+    <div class="draft-meta"><span class="status-dot" aria-hidden="true"></span><span id="save-status" role="status" aria-live="polite">Draft saved</span></div>
+    <button class="exit-link" type="button" id="exit-button">Save &amp; exit</button>
+  </header>
+
+  <nav class="step-nav" aria-label="Event creation progress">
+    <div class="progress-track" aria-hidden="true"><i id="progress-fill"></i></div>
+    <ol>
+      <li><button type="button" data-go-step="1" aria-current="step"><span>1</span><b>Event details</b></button></li>
+      <li><button type="button" data-go-step="2" disabled><span>2</span><b>Ticket tiers</b></button></li>
+      <li><button type="button" data-go-step="3" disabled><span>3</span><b>Payment &amp; payout</b></button></li>
+      <li><button type="button" data-go-step="4" disabled><span>4</span><b>Review &amp; publish</b></button></li>
+    </ol>
+  </nav>
+
+  <main class="wizard-main">
+    <form id="event-form" novalidate>
+      <section class="wizard-step active" data-step="1" aria-labelledby="step-1-title">
+        <div class="step-intro"><span class="eyebrow">STEP 01 / THE ESSENTIALS</span><h1 id="step-1-title">Give people a reason<br>to show up.</h1><p>Start with the essentials. You can fine-tune everything before publishing.</p></div>
+        <div class="form-card">
+          <div class="field full">
+            <label for="event-title">Event title <span aria-hidden="true">*</span></label>
+            <input id="event-title" name="title" type="text" maxlength="80" autocomplete="off" placeholder="e.g. Afterlight: Desert Sessions" required>
+            <div class="field-foot"><small class="error" id="title-error"></small><small><span id="title-count">0</span>/80</small></div>
+          </div>
+          <div class="field"><label for="event-date">Date <span aria-hidden="true">*</span></label><input id="event-date" name="date" type="date" required><small class="error" id="date-error"></small></div>
+          <div class="field"><label for="event-time">Doors open <span aria-hidden="true">*</span></label><input id="event-time" name="time" type="time" required><small class="error" id="time-error"></small></div>
+          <div class="field full"><label for="event-location">Venue or address <span aria-hidden="true">*</span></label><div class="input-icon"><span aria-hidden="true">⌖</span><input id="event-location" name="location" type="text" autocomplete="street-address" placeholder="Search a venue or enter an address" required></div><small class="error" id="location-error"></small></div>
+          <div class="map-preview" aria-label="Map preview for selected venue">
+            <div class="map-lines" aria-hidden="true"></div><span class="map-pin" aria-hidden="true">●</span><div><b id="map-name">Your venue will appear here</b><small>Dubai, United Arab Emirates</small></div>
+          </div>
+          <div class="field"><label for="event-category">Category</label><select id="event-category" name="category"><option>Music</option><option>Food &amp; drink</option><option>Creative</option><option>Wellness</option><option>Community</option><option>Business</option><option>Celebration</option></select></div>
+          <div class="field"><label for="event-description">Short description</label><textarea id="event-description" name="description" rows="4" maxlength="220" placeholder="Tell guests what makes this worth leaving home for."></textarea></div>
+          <div class="field full"><span class="label-text">Cover image</span><label class="cover-upload" for="cover-input"><input id="cover-input" type="file" accept="image/png,image/jpeg,image/webp"><span class="upload-icon">↥</span><span><b>Choose a cover image</b><small>JPG, PNG or WebP · 3:2 recommended</small></span><img id="cover-thumb" alt="" hidden></label></div>
+        </div>
+      </section>
+
+      <section class="wizard-step" data-step="2" aria-labelledby="step-2-title" hidden>
+        <div class="step-intro compact"><span class="eyebrow">STEP 02 / ADMISSION</span><div><h1 id="step-2-title">Build your ticket lineup.</h1><p>Mix free, paid, and donation tiers. Guests will see fees before checkout.</p></div><button class="add-tier" type="button" id="add-tier">＋ Add ticket type</button></div>
+        <div id="tier-list" class="tier-list"></div>
+        <template id="tier-template">
+          <article class="tier-card">
+            <div class="tier-head"><div class="tier-number">01</div><div><span class="tier-kind-label">PAID TICKET</span><h2 class="tier-heading">General admission</h2></div><button class="icon-button remove-tier" type="button" aria-label="Remove ticket tier">×</button></div>
+            <div class="segmented" role="group" aria-label="Ticket type"><button type="button" data-type="paid">Paid</button><button type="button" data-type="free">Free</button><button type="button" data-type="donation">Donation</button></div>
+            <div class="tier-fields">
+              <div class="field wide"><label>Ticket name <span aria-hidden="true">*</span></label><input data-key="name" type="text" maxlength="50" placeholder="General admission" required></div>
+              <div class="field price-field"><label>Price (AED) <span aria-hidden="true">*</span></label><input data-key="price" type="number" min="1" step="1" inputmode="decimal" placeholder="120"></div>
+              <div class="field"><label>Quantity <span aria-hidden="true">*</span></label><input data-key="quantity" type="number" min="1" step="1" inputmode="numeric" placeholder="100" required></div>
+              <div class="field"><label>Sale starts</label><input data-key="saleStart" type="date"></div>
+              <div class="field"><label>Sale ends</label><input data-key="saleEnd" type="date"></div>
+            </div>
+            <div class="early-row"><label class="switch"><input data-key="earlyEnabled" type="checkbox"><span aria-hidden="true"></span><b>Early-bird pricing</b></label><div class="early-fields" hidden><label>Early price (AED)<input data-key="earlyPrice" type="number" min="1" step="1" inputmode="decimal"></label><label>Ends on<input data-key="earlyEnd" type="date"></label></div></div>
+          </article>
+        </template>
+        <div class="tier-summary"><span><b id="total-capacity">0</b><small>Total capacity</small></span><span><b id="tier-count">0</b><small>Ticket types</small></span><span><b id="price-range">—</b><small>Price range</small></span></div>
+      </section>
+
+      <section class="wizard-step" data-step="3" aria-labelledby="step-3-title" hidden>
+        <div class="step-intro"><span class="eyebrow">STEP 03 / GET PAID</span><h1 id="step-3-title">Settle up,<br>without the stress.</h1><p>Choose where revenue lands and how processing fees are handled.</p></div>
+        <div class="payment-grid">
+          <fieldset class="choice-card"><legend>Payout method</legend>
+            <label class="choice-option"><input type="radio" name="payout" value="bank" checked><span class="choice-mark">⌁</span><span><b>Bank account</b><small>1–3 business days after your event</small></span><i>✓</i></label>
+            <label class="choice-option"><input type="radio" name="payout" value="paypal"><span class="choice-mark">P</span><span><b>PayPal</b><small>Sent to your connected account</small></span><i>✓</i></label>
+            <div class="bank-fields" id="bank-fields"><div class="field"><label for="account-name">Account holder</label><input id="account-name" name="accountName" type="text" autocomplete="name" placeholder="Full legal name"></div><div class="field"><label for="iban">IBAN</label><input id="iban" name="iban" type="text" autocomplete="off" placeholder="AE00 0000 0000 0000 0000 000" maxlength="29"></div></div>
+            <p class="secure-note">▣ Payout details are encrypted and never shown publicly.</p>
+          </fieldset>
+          <fieldset class="choice-card"><legend>Processing fees</legend>
+            <p class="legend-help">Gatherly fee: 3.5% + AED 2 per paid ticket.</p>
+            <label class="fee-option"><input type="radio" name="fees" value="pass" checked><span><b>Pass fees to attendees</b><small>Your listed price is what you receive.</small></span><i>Recommended</i></label>
+            <label class="fee-option"><input type="radio" name="fees" value="absorb"><span><b>Absorb fees</b><small>Fees are deducted from your payout.</small></span></label>
+            <div class="fee-example"><span>On an AED 120 ticket</span><b id="fee-example">You receive AED 120.00</b></div>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="wizard-step review-step" data-step="4" aria-labelledby="step-4-title" hidden>
+        <div class="review-editor">
+          <div class="step-intro"><span class="eyebrow">STEP 04 / FINAL CHECK</span><h1 id="step-4-title">Ready for<br>the guest list?</h1><p>Review the attendee view and fix any blockers before going live.</p></div>
+          <div class="checklist" id="checklist" aria-live="polite"></div>
+          <div class="publish-settings"><h2>Publishing</h2><label class="slug-label" for="event-slug">Public URL</label><div class="slug-input"><span>gatherly.com/e/</span><input id="event-slug" type="text" aria-label="Public event URL slug"></div><label class="check-row"><input id="terms" type="checkbox"><span>I agree to the organizer terms and refund policy.</span></label></div>
+        </div>
+        <aside class="live-preview" aria-label="Live attendee event page preview">
+          <div class="preview-bar"><span><i></i><i></i><i></i></span><b>LIVE PREVIEW</b><span class="preview-device">Mobile-ready</span></div>
+          <article class="attendee-page">
+            <div class="preview-cover" id="preview-cover"><span id="preview-category">MUSIC</span><strong id="preview-art-title">YOUR<br>EVENT</strong><i aria-hidden="true">✦</i></div>
+            <div class="preview-content"><span class="preview-date" id="preview-date-badge"><b>—</b><small>—</small></span><div class="preview-title"><h2 id="preview-title">Your event title</h2><p id="preview-description">Add a short description to give guests the vibe.</p></div><dl><div><dt>◷</dt><dd><b id="preview-date">Choose a date and time</b><small>Doors open at your selected time</small></dd></div><div><dt>⌖</dt><dd><b id="preview-location">Add your venue</b><small>Dubai, United Arab Emirates</small></dd></div></dl><div class="preview-tickets"><div><span>Tickets from</span><b id="preview-price">Set up ticket tiers</b></div><button type="button" tabindex="-1">Get tickets →</button></div><div class="host-row"><span>✦</span><p>Hosted by <b>Gatherly Organizer</b><small>Verified host</small></p></div></div>
+          </article>
+        </aside>
+      </section>
+    </form>
+  </main>
+
+  <footer class="wizard-actions"><button class="back-button" id="back-button" type="button" hidden>← Back</button><button class="preview-button" id="preview-button" type="button">Preview</button><div class="action-note"><span id="step-note">Next: build your ticket lineup</span><button class="next-button" id="next-button" type="button">Continue <span>→</span></button></div></footer>
+  <div class="mobile-preview" id="mobile-preview" hidden><button type="button" id="close-preview" aria-label="Close preview">×</button><div id="mobile-preview-content"></div></div>
+  <div class="toast" id="wizard-toast" role="status" aria-live="polite"></div>
+  <script src="create.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gatherly is the fun way to create events, invite everyone, sell tickets, and keep guests in the loop.">
+  <title>Gatherly - Make something happen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Gatherly home"><span class="brand-spark">✦</span> gatherly</a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#discover">Explore</a>
+      <a href="#features">For hosts</a>
+      <a href="#ticketing">Sell tickets</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="login-button" type="button">Log in</button>
+      <button class="create-button js-create" type="button">Create event <span>↗</span></button>
+      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-sticker sticker-one">RSVP<br><b>YES!</b></div>
+      <div class="hero-sticker sticker-two">YOU'RE<br>INVITED</div>
+      <div class="confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hero-copy">
+        <p class="tiny-label">PLANS ARE BETTER TOGETHER</p>
+        <h1>Make something<br><span>happen.</span></h1>
+        <p>Create a page that matches the vibe, invite your people, sell tickets, and keep everyone on the same page.</p>
+        <button class="hero-cta js-create" type="button">Create an event <span>→</span></button>
+        <small>Free to create. Takes about 30 seconds.</small>
+      </div>
+
+      <div class="invite-stack" aria-label="Example event invitation">
+        <div class="invite-card card-back-one"><span>BRUNCH<br>CLUB</span></div>
+        <div class="invite-card card-back-two"><span>FRI<br>09.18</span></div>
+        <article class="invite-card card-main">
+          <div class="invite-art">
+            <span class="art-kicker">ONE NIGHT ONLY</span>
+            <i class="star star-a">✦</i><i class="star star-b">✦</i>
+            <div class="disco-ball"></div>
+            <h2>AFTER<br>HOURS</h2>
+            <span class="scribble">let's dance</span>
+          </div>
+          <div class="invite-details">
+            <div><strong>After Hours at The Courtyard</strong><span>Friday, Sept 18 · 9:00 PM</span></div>
+            <button type="button" class="rsvp-button">RSVP</button>
+          </div>
+        </article>
+        <div class="guest-bubble"><span class="avatar avatar-a">M</span><span class="avatar avatar-b">J</span><span class="avatar avatar-c">S</span><b>+82 going</b></div>
+      </div>
+    </section>
+
+    <section class="press-strip" aria-label="Social proof">
+      <span>Loved by hosts everywhere</span><b>★★★★★</b><span>40,000+ five-star ratings</span><i></i><span>Over 1M memories made</span>
+    </section>
+
+    <section class="template-section" id="discover">
+      <div class="section-title">
+        <span class="pill-label">PICK YOUR VIBE</span>
+        <h2>Invites that don't<br>feel like homework.</h2>
+        <p>Start with a template, then make it entirely yours.</p>
+      </div>
+      <div class="template-rail" aria-label="Invitation templates">
+        <article class="template-card template-pink" data-title="Birthday behavior">
+          <div class="template-art"><span class="mini">SATURDAY / 8PM</span><b>BIRTHDAY<br>BEHAVIOR</b><i>♠</i></div>
+          <h3>Big birthday energy</h3><p>Party · Bold</p>
+        </article>
+        <article class="template-card template-blue" data-title="Poolside social">
+          <div class="template-art"><span class="mini">SUNDAZE</span><b>POOL<br>SIDE</b><i>☼</i></div>
+          <h3>Poolside social</h3><p>Summer · Chill</p>
+        </article>
+        <article class="template-card template-yellow" data-title="Supper at eight">
+          <div class="template-art"><span class="mini">YOU'RE INVITED TO</span><b>SUPPER<br>AT EIGHT</b><i>✿</i></div>
+          <h3>Dinner with friends</h3><p>Dinner · Cozy</p>
+        </article>
+        <article class="template-card template-green" data-title="Sunday run club">
+          <div class="template-art"><span class="mini">MEET AT 6:30AM</span><b>RUN<br>CLUB</b><i>➜</i></div>
+          <h3>Sunday run club</h3><p>Wellness · Active</p>
+        </article>
+        <article class="template-card template-purple" data-title="Night market">
+          <div class="template-art"><span class="mini">DOWNTOWN / 7PM</span><b>NIGHT<br>MARKET</b><i>✦</i></div>
+          <h3>Night market</h3><p>Community · Food</p>
+        </article>
+      </div>
+      <button class="outline-button" type="button" id="shuffle-templates">Shuffle the vibes <span>↻</span></button>
+    </section>
+
+    <section class="social-feature" id="features">
+      <div class="feature-copy">
+        <span class="pill-label dark">EVERYONE'S IN</span>
+        <h2>Not just an invite.<br>It's the group chat<br><em>before the group chat.</em></h2>
+        <p>Guests can see who's going, react, comment, share photos, and get updates without downloading anything.</p>
+        <button class="text-link js-create" type="button">Get the party started <span>→</span></button>
+      </div>
+      <div class="phone-scene">
+        <div class="phone">
+          <div class="phone-bar"><span>9:41</span><b>● ●●</b></div>
+          <div class="phone-event-art"><small>ROOFTOP / 7:30</small><strong>SUNSET<br>SOCIAL</strong><i>☀</i></div>
+          <div class="phone-content">
+            <strong>Rooftop Sunset Social</strong><span>Sat, Sep 26 · Downtown Dubai</span>
+            <div class="going-row"><span class="avatar avatar-d">A</span><span class="avatar avatar-e">K</span><span class="avatar avatar-f">R</span><b>36 friends are going</b></div>
+            <div class="phone-buttons"><button>Going ✓</button><button>Share ↗</button></div>
+            <div class="comment"><span class="avatar avatar-g">L</span><p><b>Layla</b> rooftop season is BACK 🔥</p></div>
+          </div>
+        </div>
+        <div class="reaction reaction-a">🔥 <b>12</b></div>
+        <div class="reaction reaction-b">omw!!</div>
+        <div class="reaction reaction-c">📸</div>
+      </div>
+    </section>
+
+    <section class="events-section" aria-labelledby="events-title">
+      <div class="events-heading">
+        <div><span class="pill-label">WHAT'S HAPPENING</span><h2 id="events-title">Find your next plan.</h2></div>
+        <form class="search-box" id="event-search"><label><span class="sr-only">Search events</span><span>⌕</span><input id="search-input" type="search" placeholder="Search Dubai events"></label></form>
+      </div>
+      <div class="category-row" role="group" aria-label="Filter event categories">
+        <button class="category active" data-category="all" type="button">Everything</button>
+        <button class="category" data-category="music" type="button">Music</button>
+        <button class="category" data-category="food" type="button">Food</button>
+        <button class="category" data-category="creative" type="button">Creative</button>
+        <button class="category" data-category="wellness" type="button">Wellness</button>
+      </div>
+      <div class="event-grid">
+        <article class="event-card" data-category="music" data-searchable="afterlight desert sessions music alserkal">
+          <div class="event-poster poster-red"><small>FRI 18 SEP</small><strong>AFTER<br>LIGHT</strong><i>✦</i><button class="save-button" type="button" aria-label="Save Afterlight">♡</button></div>
+          <div class="event-info"><h3>Afterlight: Desert Sessions</h3><p>Alserkal Avenue · 8:00 PM</p><div><b>From AED 120</b><span>182 going</span></div></div>
+        </article>
+        <article class="event-card" data-category="creative" data-searchable="soft forms ceramics workshop creative">
+          <div class="event-poster poster-cream"><small>SAT 19 SEP</small><strong>SOFT<br><em>forms</em></strong><i>●</i><button class="save-button" type="button" aria-label="Save Soft Forms">♡</button></div>
+          <div class="event-info"><h3>Soft Forms: Clay Workshop</h3><p>The Workshop · 11:00 AM</p><div><b>AED 180</b><span>8 spots left</span></div></div>
+        </article>
+        <article class="event-card" data-category="food" data-searchable="sunday table supper club food dinner">
+          <div class="event-poster poster-blue"><small>SUN 20 SEP</small><strong>SUNDAY<br>TABLE</strong><i>✿</i><button class="save-button" type="button" aria-label="Save Sunday Table">♡</button></div>
+          <div class="event-info"><h3>Sunday Table: Chapter 04</h3><p>Secret location · 7:30 PM</p><div><b>AED 250</b><span>24 going</span></div></div>
+        </article>
+        <article class="event-card" data-category="wellness" data-searchable="sunrise flow rooftop yoga wellness">
+          <div class="event-poster poster-lime"><small>SAT 26 SEP</small><strong>SUNRISE<br>FLOW</strong><i>☼</i><button class="save-button" type="button" aria-label="Save Sunrise Flow">♡</button></div>
+          <div class="event-info"><h3>Sunrise Flow</h3><p>Sky Garden · 6:30 AM</p><div><b>AED 75</b><span>44 going</span></div></div>
+        </article>
+      </div>
+      <p class="empty-state" id="empty-state" hidden>No plans found. Try another search.</p>
+    </section>
+
+    <section class="ticket-section" id="ticketing">
+      <div class="ticket-visual">
+        <div class="big-ticket">
+          <div class="ticket-top"><small>GATHERLY PRESENTS</small><strong>NEON<br>NIGHTS</strong><span>SEP 21 · DUBAI</span></div>
+          <div class="ticket-bottom"><span><small>ADMIT</small><b>ONE</b></span><span><small>PRICE</small><b>AED 95</b></span><i></i></div>
+        </div>
+        <span class="sold-stamp">SOLD<br>OUT!</span>
+      </div>
+      <div class="ticket-copy">
+        <span class="pill-label light">NEW: TICKETING</span>
+        <h2>Sell the tickets.<br>Skip the headache.</h2>
+        <p>Set up ticket tiers, take secure payments, scan QR codes at the door, and track every sale from one simple dashboard.</p>
+        <ul><li><span>✓</span> Flexible ticket tiers</li><li><span>✓</span> Fast, secure payouts</li><li><span>✓</span> QR check-in</li></ul>
+        <button class="white-button js-create" type="button">Start selling tickets <span>→</span></button>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <span class="burst burst-a">✦</span><span class="burst burst-b">✷</span>
+      <p>SO... WHAT ARE WE DOING?</p>
+      <h2>Your people are<br>waiting.</h2>
+      <button class="hero-cta js-create" type="button">Create your event <span>→</span></button>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span class="brand-spark">✦</span> gatherly</a><p>Make plans. Make memories.</p><div><a href="#discover">Explore</a><a href="#features">For hosts</a><a href="#ticketing">Tickets</a></div><span>© 2026 Gatherly</span></footer>
+
+  <div class="modal" id="create-modal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
+      <span class="modal-icon">✦</span><p>LET'S MAKE PLANS</p><h2 id="modal-title">What's the occasion?</h2>
+      <div class="occasion-grid"><button>🎂 Birthday</button><button>🍽️ Dinner</button><button>🎵 Party</button><button>🎟️ Ticketed event</button></div>
+      <label>Event name<input id="event-name" type="text" placeholder="Give it a fun name"></label>
+      <button class="modal-next" type="button">Start creating <span>→</span></button>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

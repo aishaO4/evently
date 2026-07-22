@@ -1,0 +1,14 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+type Ticket = { id: string; tier: string; status: string; ticketReference: string; event: { title: string; startsAt: string; location: string; category: string } };
+export function TicketDetail({ id }: { id: string }) {
+  const [ticket, setTicket] = useState<Ticket | null>(null); const [error, setError] = useState("");
+  function load() { setError(""); fetch(`/api/tickets/${id}`).then(async (response) => { const data = await response.json(); if (!response.ok) throw new Error(data.error); setTicket(data.ticket); }).catch((reason) => setError(reason.message)); }
+  useEffect(() => { fetch(`/api/tickets/${id}`).then(async (response) => { const data = await response.json(); if (!response.ok) throw new Error(data.error); setTicket(data.ticket); }).catch((reason) => setError(reason.message)); }, [id]);
+  if (error) return <div className="workspace-alert" role="alert"><b>This ticket could not be loaded.</b><span>{error}</span><button className="button-link" type="button" onClick={load}>Try again</button></div>;
+  if (!ticket) return <div className="workspace-loading digital-ticket-skeleton" role="status" aria-label="Loading ticket"><span /><span /></div>;
+  const directions = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ticket.event.location)}`;
+  return <div className="ticket-detail-wrap"><Link className="back-link" href="/tickets">← Back to wallet</Link><article className="digital-ticket"><div className="ticket-main"><div className="ticket-card-top"><span className="mono">{ticket.event.category} / ADMIT ONE</span><span className={`status-label ${ticket.status}`}>{ticket.status}</span></div><h2>{ticket.event.title}</h2><dl><div><dt>Date &amp; time</dt><dd><time dateTime={ticket.event.startsAt}>{new Date(ticket.event.startsAt).toLocaleString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit" })}</time></dd></div><div><dt>Venue</dt><dd>{ticket.event.location}</dd></div><div><dt>Ticket</dt><dd>{ticket.tier}</dd></div></dl></div><div className="ticket-stub"><span className="mono">TICKET REFERENCE</span><div className="entry-code" aria-label={`Ticket reference ${ticket.ticketReference}`}>{ticket.ticketReference}</div><small>Venue staff will verify this ticket against your signed-in account.</small></div></article><div className="ticket-actions" aria-label="Ticket actions"><a className="button-link" href={directions} target="_blank" rel="noreferrer">Get directions</a><button className="button-link" type="button" onClick={() => window.print()}>Print ticket</button></div><p className="offline-note"><span aria-hidden="true">●</span> Once loaded, keep this page open for quick access at the door.</p></div>;
+}

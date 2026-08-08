@@ -6,8 +6,8 @@ export default function HomePage() {
   return (
     <main className="home-page">
       <header className="site-header">
-        <Link className="brand" href="/" aria-label="Gatherly home">
-          <span className="brand-spark">✦</span> gatherly
+        <Link className="brand" href="/" aria-label="Ticklit home">
+          <span className="brand-spark">✦</span> ticklit
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
           <Link href="#discover">Explore</Link>
@@ -234,7 +234,7 @@ export default function HomePage() {
         <div className="ticket-visual">
           <div className="big-ticket">
             <div className="ticket-top">
-              <small>GATHERLY PRESENTS</small>
+              <small>TICKLIT PRESENTS</small>
               <strong>
                 NEON
                 <br />
@@ -305,7 +305,7 @@ export default function HomePage() {
 
       <footer>
         <Link className="brand" href="#top">
-          <span className="brand-spark">✦</span> gatherly
+          <span className="brand-spark">✦</span> ticklit
         </Link>
         <p>Make plans. Make memories.</p>
         <div>
@@ -313,7 +313,7 @@ export default function HomePage() {
           <Link href="#features">For hosts</Link>
           <Link href="#ticketing">Tickets</Link>
         </div>
-        <span>© 2026 Gatherly</span>
+        <span>© 2026 Ticklit</span>
       </footer>
     </main>
   );

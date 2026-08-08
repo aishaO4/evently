@@ -5,13 +5,13 @@ export function AuthShell({ children, alternateHref, alternateLabel, artMode = "
   return <main className="auth-page">
     <section className="auth-panel">
       <header className="auth-top">
-        <Link className="brand" href="/"><span className="brand-mark">+</span> gatherly</Link>
+        <Link className="brand" href="/"><span className="brand-mark">+</span> ticklit</Link>
         <Link className="auth-top-link" href={alternateHref}>{alternateLabel}</Link>
       </header>
       {children}
-      <footer className="auth-legal">By continuing, you agree to Gatherly&apos;s terms and acknowledge the privacy policy.</footer>
+      <footer className="auth-legal">By continuing, you agree to Ticklit&apos;s terms and acknowledge the privacy policy.</footer>
     </section>
-    <aside className="auth-art" aria-label="Gatherly event poster artwork">
+    <aside className="auth-art" aria-label="Ticklit event poster artwork">
       <span className="art-star" aria-hidden="true">*</span>
       <div className="poster-stack" aria-hidden="true">
         <div className="poster back-one" />

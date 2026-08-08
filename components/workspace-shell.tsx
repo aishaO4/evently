@@ -14,7 +14,7 @@ export function WorkspaceShell({ user, eyebrow, title, children }: { user: SafeU
 
   return <main className="workspace">
     <header className="workspace-header">
-      <div className="workspace-brand"><Link className="brand" href="/"><span className="brand-mark">+</span> gatherly</Link><span className="role-chip">{user.role} workspace</span></div>
+      <div className="workspace-brand"><Link className="brand" href="/"><span className="brand-mark">+</span> ticklit</Link><span className="role-chip">{user.role} workspace</span></div>
       <nav aria-label={`${user.role} navigation`}>
         {links.map((link) => <Link key={link.href} href={link.href} aria-current={active(link.href) ? "page" : undefined}>{link.label}</Link>)}
         <Link href="/account" aria-current={active("/account") ? "page" : undefined}>Account</Link>

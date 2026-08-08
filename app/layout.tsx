@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "Gatherly", template: "%s | Gatherly" },
+  title: { default: "Ticklit", template: "%s | Ticklit" },
   description: "Make plans worth showing up for.",
 };
 

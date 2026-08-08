@@ -7,7 +7,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
 
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) {
     if (process.env.NODE_ENV === "production") throw new Error("Password reset email is not configured.");
-    console.info(`[Gatherly development reset link] ${email}: ${resetUrl}`);
+    console.info(`[Ticklit development reset link] ${email}: ${resetUrl}`);
     return;
   }
 
@@ -18,9 +18,9 @@ export async function sendPasswordResetEmail(email: string, token: string) {
     auth: { user: SMTP_USER, pass: SMTP_PASSWORD },
   });
   await transport.sendMail({
-    from: SMTP_FROM || "Gatherly <no-reply@example.com>",
+    from: SMTP_FROM || "Ticklit <no-reply@example.com>",
     to: email,
-    subject: "Reset your Gatherly password",
-    text: `Reset your Gatherly password: ${resetUrl}\n\nThis link expires in one hour. If you did not request it, you can ignore this email.`,
+    subject: "Reset your Ticklit password",
+    text: `Reset your Ticklit password: ${resetUrl}\n\nThis link expires in one hour. If you did not request it, you can ignore this email.`,
   });
 }

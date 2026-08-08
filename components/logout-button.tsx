@@ -14,7 +14,7 @@ export function LogoutButton() {
       const response = await fetch("/api/auth/logout", { method: "POST" });
       if (!response.ok) { const data = await response.json(); setError(data.error || "Could not sign out."); return; }
       router.push("/login"); router.refresh();
-    } catch { setError("Could not reach Gatherly. Try again."); }
+    } catch { setError("Could not reach Ticklit. Try again."); }
     finally { setPending(false); }
   }
 

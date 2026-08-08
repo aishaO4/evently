@@ -7,7 +7,7 @@ export const signupSchema = z.object({
   name: z.string().trim().min(2, "Enter your name.").max(80),
   email,
   password,
-  role: z.enum(["organizer", "attendee"], { error: "Choose how you will use Gatherly." }),
+  role: z.enum(["organizer", "attendee"], { error: "Choose how you will use Ticklit." }),
 });
 
 export const loginSchema = z.object({

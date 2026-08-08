@@ -47,7 +47,7 @@ export async function getHostBadge(db: Db, user: Record<string, unknown>, catego
 export async function toPublicHost(db: Db, user: Record<string, unknown>, category?: string): Promise<PublicHost> {
   return {
     id: String(user._id),
-    name: String(user.name || "Gatherly host"),
+    name: String(user.name || "Ticklit host"),
     avatarUrl: typeof user.avatarUrl === "string" ? user.avatarUrl : null,
     badge: await getHostBadge(db, user, category),
   };

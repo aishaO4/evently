@@ -47,7 +47,7 @@ export function AuthForm({ mode, token = "", returnTo = "" }: { mode: Mode; toke
         router.push(returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : roleHome);
       }
     } catch {
-      setError("We could not reach Gatherly. Check your connection and try again.");
+      setError("We could not reach Ticklit. Check your connection and try again.");
     } finally {
       setPending(false);
     }
@@ -73,7 +73,7 @@ export function AuthForm({ mode, token = "", returnTo = "" }: { mode: Mode; toke
       {mode === "reset" && !token && <div className="form-alert" role="alert">This reset link is missing or invalid. Request a new password reset link.</div>}
       <button className="submit-button" type="submit" disabled={pending || (mode === "reset" && !token)}>{pending ? meta.pending : meta.submit}</button>
       {mode === "signup" && <p className="form-foot">Already have an account? <Link href="/login">Sign in</Link></p>}
-      {mode === "login" && <p className="form-foot">New to Gatherly? <Link href="/signup">Create an account</Link></p>}
+      {mode === "login" && <p className="form-foot">New to Ticklit? <Link href="/signup">Create an account</Link></p>}
       {(mode === "forgot" || mode === "reset") && <p className="form-foot"><Link href="/login">Back to sign in</Link></p>}
     </form>
   </div>;

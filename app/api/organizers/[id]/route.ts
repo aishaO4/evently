@@ -25,7 +25,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
     return NextResponse.json({
       organizer: {
         id,
-        name: String(organizer.name || "Gatherly host"),
+        name: String(organizer.name || "Ticklit host"),
         avatarUrl: typeof organizer.avatarUrl === "string" ? organizer.avatarUrl : null,
         memberSince: organizer.createdAt instanceof Date ? organizer.createdAt.toISOString() : null,
         badge: await getHostBadge(db, organizer),

@@ -296,7 +296,7 @@ function continueFlow() {
   setTimeout(() => {
     nextButton.textContent = "Published ✓";
     saveStatus.textContent = "Event live";
-    showToast(`Live at gatherly.com/e/${document.querySelector("#event-slug").value}`);
+    showToast(`Live at ticklit.com/e/${document.querySelector("#event-slug").value}`);
     localStorage.removeItem(STORAGE_KEY);
   }, 700);
 }

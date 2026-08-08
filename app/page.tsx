@@ -51,6 +51,7 @@ export default function HomePage() {
             <br />
             <span>happen.</span>
           </h1>
+          <p className="hero-tagline">One tick and it&apos;s lit.</p>
           <p>
             Create a page that matches the vibe, invite your people, sell tickets,
             and keep everyone on the same page.
